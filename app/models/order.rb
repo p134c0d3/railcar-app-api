@@ -5,6 +5,7 @@ class Order < ApplicationRecord
   has_one :raw_material
 
   # validations
-  validates :car_number, :requested_date, :received_date, :extraction_start_date, :emptied_date, :released_date, presence: true
+  validates :car_number, presence: true
+  validates :requested_date, presence: true
 
 end
