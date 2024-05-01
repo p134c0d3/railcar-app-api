@@ -4,6 +4,6 @@ class RawMaterialBlueprint < Blueprinter::Base
     identifier :id
 
     view :normal do
-      fields :name, :weight
+      fields :name
     end
 end
