@@ -3,13 +3,14 @@ class OrdersController < ApplicationController
   # before_action :authenticate_request
 
   def index
+
     @orders = Order.includes(:raw_material).order(requested_date: :desc)
     render json: OrderBlueprint.render(@orders, view: :normal), status: 200
   end
 
   def show
-    @orders = Order.find(params[:id])
-    render json: @orders, status: 200
+    orders = Order.find(params[:id])
+    render json: orders, status: 200
   end
 
   def add
@@ -34,11 +35,11 @@ class OrdersController < ApplicationController
 
   def order_raw_material
     orders = Order.find(params[:id])
-    @raw_material = orders.raw_material
-    if @raw_material
-      render json: @raw_material, status: 200
+    raw_material = orders.raw_material
+    if raw_material
+      render json: raw_material, status: 200
     else
-      render json: { errors: @raw_material.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: raw_material.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -46,7 +47,7 @@ class OrdersController < ApplicationController
     orders = Order.find(params[:id])
 
     if orders.destroy
-      render json: orders, status: 200
+      render json: nil, status: 200
     else
       render json: { errors: orders.errors.full_messages }, status: :unprocessable_entity
     end
@@ -57,7 +58,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:car_number, :requested_date, :received_date, :extraction_start_date, :emptied_date, :released_date, :raw_material_id)
+    params.require(:order).permit(:car_number, :requested_date, :received_date, :extraction_start_date, :weight, :emptied_date, :released_date, :raw_material_id)
   end
 
 end

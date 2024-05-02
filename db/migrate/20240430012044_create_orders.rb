@@ -5,6 +5,7 @@ class CreateOrders < ActiveRecord::Migration[7.1]
       t.date :requested_date
       t.date :received_date
       t.date :extraction_start_date
+      t.integer :weight
       t.date :emptied_date
       t.date :released_date
       t.references :raw_material, null: false, foreign_key: true
