@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  # before_action :authenticate_request, except: [:create]
-  before_action :authorize_admin, only: [:index, :show]
+  before_action :authenticate_request, except: [:create]
+  before_action :authorize_admin, only: [:index, :show, :destroy]
 
  
   # create
