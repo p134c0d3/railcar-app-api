@@ -3,13 +3,13 @@ class OrdersController < ApplicationController
   # before_action :authenticate_request
 
   def index
-    @orders = Order.all
-    render json: @orders, status: 200
+    orders = Order.all
+    render json: orders, status: 200
   end
 
   def show
-    @orders = Order.find(params[:id])
-    render json: @orders, status: 200
+    orders = Order.find(params[:id])
+    render json: orders, status: 200
   end
 
   def add
@@ -34,11 +34,11 @@ class OrdersController < ApplicationController
 
   def order_raw_material
     orders = Order.find(params[:id])
-    @raw_material = orders.raw_material
-    if @raw_material
-      render json: @raw_material, status: 200
+    raw_material = orders.raw_material
+    if raw_material
+      render json: raw_material, status: 200
     else
-      render json: { errors: @raw_material.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: raw_material.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
