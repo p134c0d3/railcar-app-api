@@ -8,13 +8,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  # RawMaterial routes
-  get "/raw_materials" => "raw_material#index" # List all raw materials
-  get "/raw_materials/:id" => "raw_material#show" # Show a specific raw material
-  post "/raw_materials" => "raw_material#add" # Add a new raw material
-  put "/raw_materials/:id" => "raw_material#update" # Update a raw material
-  delete "/raw_materials/:id" => "raw_material#delete" # Delete a raw material
-  get "/raw_materials/:id/orders" => "raw_material#raw_material_orders" # List all orders for a specific raw material
 
   # Order routes
   get "/orders" => "orders#index" # List all orders
@@ -23,4 +16,12 @@ Rails.application.routes.draw do
   put "/orders/:id" => "orders#update" # Update an order
   delete "/orders/:id" => "orders#destroy" # Delete an order
   get "/orders/:id/raw_material" => "orders#order_raw_material" # List all raw materials for an order
+
+  # RawMaterial routes
+  get "/raw_materials" => "raw_material#index" # List all raw materials
+  get "/raw_materials/:id" => "raw_material#show" # Show a specific raw material
+  post "/raw_materials" => "raw_material#add" # Add a new raw material
+  put "/raw_materials/:id" => "raw_material#update" # Update a raw material
+  delete "/raw_materials/:id" => "raw_material#delete" # Delete a raw material
+  get "/raw_materials/:id/orders" => "raw_material#raw_material_orders" # List all orders for a specific raw material
 end
