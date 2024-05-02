@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   # before_action :authenticate_request, except: [:create]
+  before_action :authorize_admin, only: [:index, :show]
 
  
   # create
@@ -12,10 +13,16 @@ class UsersController < ApplicationController
     end
   end
 
-  # read
+  # read all
   def index
     users = User.all
     render json: users, status: 200
+  end
+
+  # read one
+  def show
+    user = User.find(params[:id])
+    render json: user, status: 200
   end
 
   # update
@@ -32,9 +39,15 @@ class UsersController < ApplicationController
   def destroy
     user = User.find(params[:id])
     if user.destroy
-      render json: { message: 'User deleted successfully'} status: 200
+      render json: { message: 'User deleted successfully'}, status: 200
     else
       render json: { error: user.errors.full_messages }, status: :unprocessable_entity
     end
+  end
+
+  private
+
+  def user_params
+    params.permit(:email, :first_name, :last_name, :password, :password_confirmation, :user_type)
   end
 end
