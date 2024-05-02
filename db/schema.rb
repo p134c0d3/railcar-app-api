@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_30_214402) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_02_225810) do
   create_table "orders", force: :cascade do |t|
     t.string "car_number"
     t.date "requested_date"
@@ -21,12 +21,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_30_214402) do
     t.integer "raw_material_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "weight"
     t.index ["raw_material_id"], name: "index_orders_on_raw_material_id"
   end
 
   create_table "raw_materials", force: :cascade do |t|
     t.string "material_name"
-    t.integer "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
