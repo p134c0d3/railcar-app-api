@@ -16,6 +16,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_30_214402) do
     t.date "requested_date"
     t.date "received_date"
     t.date "extraction_start_date"
+    t.integer "weight"
     t.date "emptied_date"
     t.date "released_date"
     t.integer "raw_material_id", null: false
@@ -26,7 +27,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_30_214402) do
 
   create_table "raw_materials", force: :cascade do |t|
     t.string "material_name"
-    t.integer "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -46,7 +46,7 @@ class OrdersController < ApplicationController
     orders = Order.find(params[:id])
 
     if orders.destroy
-      render json: orders, status: 200
+      render json: nil, status: 200
     else
       render json: { errors: orders.errors.full_messages }, status: :unprocessable_entity
     end
@@ -57,7 +57,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:car_number, :requested_date, :received_date, :extraction_start_date, :emptied_date, :released_date, :raw_material_id)
+    params.require(:order).permit(:car_number, :requested_date, :received_date, :extraction_start_date, :weight, :emptied_date, :released_date, :raw_material_id)
   end
 
 end
