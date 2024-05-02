@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
   def order_raw_material
     orders = Order.find(params[:id])
     @raw_material = orders.raw_material
-    if @raw_materials
+    if @raw_material
       render json: @raw_material, status: 200
     else
       render json: { errors: @raw_material.errors.full_messages }, status: :unprocessable_entity
