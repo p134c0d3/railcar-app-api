@@ -16,6 +16,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_225810) do
     t.date "requested_date"
     t.date "received_date"
     t.date "extraction_start_date"
+    t.integer "weight"
     t.date "emptied_date"
     t.date "released_date"
     t.integer "raw_material_id", null: false
