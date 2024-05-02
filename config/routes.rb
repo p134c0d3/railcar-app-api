@@ -7,4 +7,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+
+  # Order routes
+  get "/orders" => "orders#index" # List all orders
+  get "/orders/:id" => "orders#show" # List a single order
+  post "/orders" => "orders#create" # Create a new order
+  put "/orders/:id" => "orders#update" # Update an order
+  delete "/orders/:id" => "orders#destroy" # Delete an order
+  get "/orders/:id/raw_material" => "orders#order_raw_material" # List all raw materials for an order
 end
