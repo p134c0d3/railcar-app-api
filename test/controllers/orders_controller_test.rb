@@ -1,4 +1,4 @@
-require "test_helper"
+require_relative "../test_helper.rb" 
 
 class OrdersControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
