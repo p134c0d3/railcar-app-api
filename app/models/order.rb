@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  belongs_to :raw_material
+  # belongs_to :raw_material
   
   # associations
   has_one :raw_material
