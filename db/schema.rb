@@ -42,5 +42,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_225630) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "orders", "raw_material"
+  add_foreign_key "orders", "raw_materials"
 end
