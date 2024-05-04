@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
   # before_action :authenticate_request
 
   def index
-
     @orders = Order.includes(:raw_material).order(requested_date: :desc)
     render json: OrderBlueprint.render(@orders, view: :normal), status: 200
   end
