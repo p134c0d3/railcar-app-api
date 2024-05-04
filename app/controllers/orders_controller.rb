@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  require_relative '../services/csv_import_service.rb'
   # Authenticate request before any action in the controller
   # before_action :authenticate_request
 
@@ -53,6 +54,11 @@ class OrdersController < ApplicationController
     end
   end
 
+  def import
+    
+      CsvImportService.new.call(params[:file])
+      
+  end
 
 
   private

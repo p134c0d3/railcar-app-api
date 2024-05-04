@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   put "/orders/:id" => "orders#update" # Update an order
   delete "/orders/:id" => "orders#destroy" # Delete an order
   get "/orders/:id/raw_material" => "orders#order_raw_material" # List all raw materials for an order
+  post "/orders/import" => "orders#import" # Import orders from a CSV file
 
   # RawMaterial routes
   get "/raw_materials" => "raw_material#index" # List all raw materials
