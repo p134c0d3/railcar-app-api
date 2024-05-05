@@ -25,11 +25,11 @@ Rails.application.routes.draw do
   delete "/raw_materials/:id" => "raw_material#delete" # Delete a raw material
   get "/raw_materials/:id/orders" => "raw_material#raw_material_orders" # List all orders for a specific raw material
   
-# Login route
-post '/login', to: 'sessions#create'
+  # Login route
+  post '/login', to: 'sessions#create'
 
 
-# User routes
-resources :users
+  # User routes
+  resources :users
 
 end
