@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
-  before_action :authenticate_request, except: [:create]
-  before_action :authorize_admin, only: [:index, :show, :destroy]
+  # before_action :authenticate_request, except: [:create]
+  # before_action :authorize_admin, only: [:index, :show, :destroy]
 
  
   # create
   def create
     user = User.create(user_params)
     if user.save
-      render json: user, status: :created
+      render json: UserBlueprint.render(user, view: :normal), status: :created
     else
       render json:  { error: user.errors.full_messages }, status: :unprocessable_entity
     end
@@ -16,20 +16,20 @@ class UsersController < ApplicationController
   # read all
   def index
     users = User.all
-    render json: users, status: 200
+    render json: UserBlueprint.render(users, view: :normal), status: 200
   end
 
   # read one
   def show
     user = User.find(params[:id])
-    render json: user, status: 200
+    render json: UserBlueprint.render(user, view: :normal), status: 200
   end
 
   # update
   def update
     user = User.find(params[:id])
     if user.update(user_params)
-      render json: user, status: 200
+      render json: UserBlueprint.render(user, view: :normal), status: 200
     else
       render json: { error: user.errors.full_messages }, status: :unprocessable_entity
     end
