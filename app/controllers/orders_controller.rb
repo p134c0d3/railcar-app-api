@@ -24,12 +24,12 @@ class OrdersController < ApplicationController
   end
 
   def update
-    orders = Order.find(params[:id])
-    orders.update(order_params)
-    if orders.save
-      render json: orders, status: 200
+    @orders = Order.find(params[:id])
+    
+    if @orders.update(order_params)
+      render json: @orders, status: 200
     else
-      render json: { errors: orders.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @orders.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -43,13 +43,13 @@ class OrdersController < ApplicationController
     end
   end
 
-  def delete
-    orders = Order.find(params[:id])
+  def destroy
+    @order = Order.find(params[:id])
 
-    if orders.destroy
+    if @order.destroy
       render json: nil, status: 200
     else
-      render json: { errors: orders.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @order.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
