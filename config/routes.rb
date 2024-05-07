@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # Order routes
   get "/cars" => "orders#index" # List all orders
   get "/orders/:id" => "orders#show" # List a single order
-  post "/orders" => "orders#create" # Create a new order
+  post "/orders" => "orders#add" # Create a new order
   put "/orders/:id" => "orders#update" # Update an order
   delete "/orders/:id" => "orders#destroy" # Delete an order
   get "/orders/:id/raw_material" => "orders#order_raw_material" # List all raw materials for an order
