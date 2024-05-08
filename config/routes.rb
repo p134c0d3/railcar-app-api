@@ -11,12 +11,12 @@ Rails.application.routes.draw do
 
   # Order routes
   get "/cars" => "orders#index" # List all orders
-  get "/orders/:id" => "orders#show" # List a single order
-  post "/orders" => "orders#create" # Create a new order
-  put "/orders/:id" => "orders#update" # Update an order
-  delete "/orders/:id" => "orders#destroy" # Delete an order
-  get "/orders/:id/raw_material" => "orders#order_raw_material" # List all raw materials for an order
-  post "/orders/import" => "orders#import" # Import orders from a CSV file
+  get "/cars/:id" => "orders#show" # List a single order
+  post "/cars" => "orders#create" # Create a new order
+  put "/cars/:id" => "orders#update" # Update an order
+  delete "/cars/:id" => "orders#destroy" # Delete an order
+  get "/cars/:id/raw_material" => "orders#order_raw_material" # List all raw materials for an order
+  post "/cars/import" => "orders#import" # Import orders from a CSV file
 
   # RawMaterial routes
   get "/raw_materials" => "raw_material#index" # List all raw materials
