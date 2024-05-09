@@ -3,22 +3,22 @@ class RawMaterialController < ApplicationController
   # before_action :authenticate_request
   
   def index
-    @raw_materials = RawMaterial.all
-    render json: @raw_materials, status: 200
+    raw_material = RawMaterial.all
+    render json: RawMaterialBlueprint.render(raw_material, view: :normal), status: 200
   end
 
   def show
     @raw_material = RawMaterial.find(params[:id])
-    render json: @raw_material, status: 200
+    render json: RawMaterialBlueprint.render(@raw_material, view: :normal), status: 200
   end
 
   def add
     raw_material = RawMaterial.new(raw_material_params)
 
     if raw_material.save
-      render json: raw_material, status: 201
+      render json: RawMaterialBlueprint.render(raw_material, view: :normal), status: 201
     else
-      render json: { errors: raw_material.errors }, status: :unprocessable_entity
+      render json: { errors: raw_material.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -28,7 +28,7 @@ class RawMaterialController < ApplicationController
     if raw_material.save
       render json: raw_material, status: 200
     else
-      render json: { errors: raw_material.errors }, status: :unprocessable_entity
+      render json: { errors: raw_material.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -38,7 +38,7 @@ class RawMaterialController < ApplicationController
     if @orders
       render json: @orders, status: 200
     else
-      render json: { errors: @orders.errors }, status: :unprocessable_entity
+      render json: { errors: @orders.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -48,7 +48,7 @@ class RawMaterialController < ApplicationController
     if raw_material.destroy
       render json: raw_material, status: 200
     else
-      render json: { errors: raw_material.errors }, status: :unprocessable_entity
+      render json: { errors: raw_material.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
