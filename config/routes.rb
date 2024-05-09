@@ -33,4 +33,6 @@ post '/login', to: 'sessions#create'
 # User routes
 resources :users
 
+# Order routes
+resources :orders
 end

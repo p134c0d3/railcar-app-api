@@ -14,12 +14,12 @@ class OrdersController < ApplicationController
   end
 
   def add
-    orders = Order.new(order_params)
+    order = Order.new(order_params)
 
-    if orders.save
-      render json: orders, status: 200
+    if order.save
+      render json: order, status: 200
     else
-      render json: { errors: order.errors.full_messages }, status: :unprocessable_entity
+      render json: { error: order.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
