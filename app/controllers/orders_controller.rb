@@ -10,14 +10,14 @@ class OrdersController < ApplicationController
 
   def show
     orders = Order.find(params[:id])
-    render json: orders, status: 200
+    render json: OrderBlueprint.render(orders, view: :normal), status: 200
   end
 
   def add
     orders = Order.new(order_params)
 
     if orders.save
-      render json: orders, status: 200
+      render json: OrderBlueprint.render(orders, view: :normal), status: 200
     else
       render json: { errors: order.errors.full_messages }, status: :unprocessable_entity
     end
