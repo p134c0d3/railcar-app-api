@@ -4,19 +4,19 @@ class RawMaterialController < ApplicationController
   
   def index
     @raw_materials = RawMaterial.all
-    render json: @raw_materials, status: 200
+    render json: RawMaterialBlueprint.render(@raw_materials, view: :normal), status: 200
   end
 
   def show
     @raw_material = RawMaterial.find(params[:id])
-    render json: @raw_material, status: 200
+    render json: RawMaterialBlueprint.render(@raw_material, view: :normal), status: 200
   end
 
   def add
     raw_material = RawMaterial.new(raw_material_params)
 
     if raw_material.save
-      render json: raw_material, status: 201
+      render json: RawMaterialBlueprint.render(raw_material, view: :normal), status: 201
     else
       render json: { errors: raw_material.errors }, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class RawMaterialController < ApplicationController
     raw_material = RawMaterial.find(params[:id])
     raw_material.update(raw_material_params)
     if raw_material.save
-      render json: raw_material, status: 200
+      render json: RawMaterialBlueprint.render(raw_material, view: :normal), status: 200
     else
       render json: { errors: raw_material.errors }, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class RawMaterialController < ApplicationController
     raw_material = RawMaterial.find(params[:id])
     @orders = raw_material.orders
     if @orders
-      render json: @orders, status: 200
+      render json: OrderBlueprint.render(@orders, view: :normal), status: 200
     else
       render json: { errors: @orders.errors }, status: :unprocessable_entity
     end
@@ -46,7 +46,7 @@ class RawMaterialController < ApplicationController
     raw_material = RawMaterial.find(params[:id])
     
     if raw_material.destroy
-      render json: raw_material, status: 200
+      render json: RawMaterialBlueprint.render(raw_material, view: :normal), status: 200
     else
       render json: { errors: raw_material.errors }, status: :unprocessable_entity
     end
@@ -55,6 +55,6 @@ class RawMaterialController < ApplicationController
   private
 
   def raw_material_params
-    params.require(:raw_material).permit(:name)
+    params.require(:raw_material).permit(:material_name)
   end
 end

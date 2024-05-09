@@ -10,14 +10,14 @@ class OrdersController < ApplicationController
 
   def show
     orders = Order.find(params[:id])
-    render json: orders, status: 200
+    render json: OrderBlueprint.render(order, view: :normal), status: 200
   end
 
   def add
     orders = Order.new(order_params)
 
     if orders.save
-      render json: orders, status: 200
+      render json: OrderBlueprint.render(order, view: :normal), status: 200
     else
       render json: { errors: order.errors.full_messages }, status: :unprocessable_entity
     end
@@ -27,17 +27,17 @@ class OrdersController < ApplicationController
     orders = Order.find(params[:id])
     orders.update(order_params)
     if orders.save
-      render json: orders, status: 200
+      render json: OrderBlueprint.render(order, view: :normal), status: 200
     else
       render json: { errors: orders.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
   def order_raw_material
-    orders = Order.find(params[:id])
-    raw_material = orders.raw_material
+    order = Order.find(params[:id])
+    raw_material = order.raw_material
     if raw_material
-      render json: raw_material, status: 200
+      render json: RawMaterialBlueprint.render(order, view: :normal), status: 200
     else
       render json: { errors: raw_material.errors.full_messages }, status: :unprocessable_entity
     end
@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
     orders = Order.find(params[:id])
 
     if orders.destroy
-      render json: nil, status: 200
+      render json: {message: "Order deleted successfully."}, status: 200
     else
       render json: { errors: orders.errors.full_messages }, status: :unprocessable_entity
     end
