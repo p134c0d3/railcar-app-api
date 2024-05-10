@@ -28,8 +28,7 @@ Rails.application.routes.draw do
   
   # Login route
   post '/login', to: 'sessions#create'
-
-
+  get 'web/bootstrap'
   # User routes
   resources :users
 
