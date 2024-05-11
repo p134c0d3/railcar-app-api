@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'web/bootstrap'
+  get 'web/bootstrap', to: 'web#bootstrap'
   get 'sessions/create'
 
   post '/login', to: 'sessions#create'
