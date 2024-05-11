@@ -35,4 +35,5 @@ resources :users
 
 # Order routes
 resources :orders
+resources :raw_material
 end
