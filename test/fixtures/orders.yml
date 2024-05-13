@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  car_number: MyString
+  requested_date: 2024-04-29
+  received_date: 2024-04-29
+  extraction_start_date: 2024-04-29
+  emptied_date: 2024-04-29
+  released_date: 2024-04-29
+  raw_material: one
+
+two:
+  car_number: MyString
+  requested_date: 2024-04-29
+  received_date: 2024-04-29
+  extraction_start_date: 2024-04-29
+  emptied_date: 2024-04-29
+  released_date: 2024-04-29
+  raw_material: two
