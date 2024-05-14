@@ -11,10 +11,11 @@ services:
       plan: free
       buildCommand: './bin/render-build.sh'
       # preDeployCommand: "./bin/rails db:migrate" # preDeployCommand only available on paid instance types
-      startCommand: 'bundle exec rails server'
+      # startCommand: './bin/rails server'
+      startCommand: "bundle exec rails server"
       envVars:
           - key: DATABASE_URL
-              fromDatabase:
+            fromDatabase:
                 name: railcarapi
                 property: connectionString
           - key: RAILS_MASTER_KEY
