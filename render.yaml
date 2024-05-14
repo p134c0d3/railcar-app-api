@@ -14,7 +14,7 @@ services:
       startCommand: 'bundle exec rails server'
       envVars:
           - key: DATABASE_URL
-            fromDatabase:
+              fromDatabase:
                 name: railcarapi
                 property: connectionString
           - key: RAILS_MASTER_KEY
