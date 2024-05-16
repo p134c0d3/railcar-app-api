@@ -55,6 +55,6 @@ class RawMaterialController < ApplicationController
   private
 
   def raw_material_params
-    params.require(:raw_material).permit(:name)
+    params.require(:raw_material).permit(:material_name)
   end
 end
