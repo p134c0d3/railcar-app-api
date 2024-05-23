@@ -8,7 +8,7 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     #change to front end url
-    origins 'localhost:4200'
+    origins 'https://railcar-app.vercel.app'
     resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
   end
 end
