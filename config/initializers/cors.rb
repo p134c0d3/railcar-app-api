@@ -11,4 +11,14 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     origins 'https://railcar-app.vercel.app'
     resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
   end
+  allow do
+    #allows localhost
+    origins 'http://localhost:4200'
+    resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
+  end
+  allow do
+    #allows the staging preview branch
+    origins 'https://railcar-app-git-staging-john-ps-projects.vercel.app'
+    resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
+  end
 end
